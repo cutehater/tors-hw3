@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option go_package = "/protos";
+
+service Node {
+  rpc ProcessUpdates(ProcessUpdatesIn) returns (ProcessUpdatesOut);
+}
+
+message ProcessUpdatesIn {
+  int64 sender = 1;
+  repeated int64 deps = 2;
+  repeated Update updates = 3;
+}
+
+message ProcessUpdatesOut {
+}
+
+message Update {
+  string key = 1;
+  string value = 2;
+}
